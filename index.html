@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="bootstrap-icons-1.10.5/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="css/main.css">
@@ -15,11 +16,115 @@
 </head>
 
 <body>
+    <section id="loading"><span class="loader"></span></section>
+    <nav class="position-fixed top-0  bottom-0  d-flex z-3">
+        <div class=" bg-black text-white  justify-content-center vertical-nav">
+            <div class="container ps-3 d-flex border-white flex-column justify-content-between h-100 py-3">
+                <ul class="navbar-nav h-50 d-flex flex-column justify-content-evenly overflow-hidden">
+                    <li>Search</li>
+                    <li>Categories</li>
+                    <li>Area</li>
+                    <li>Ingredients</li>
+                    <li>Contact US</li>
+                </ul>
+                <div class="d-flex flex-column">
+                    <div class="close-nav-icons">
+                        <i class="fa-brands fa-facebook"></i>
+                        <i class="fa-brands fa-twitter"></i>
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <p>Copyright Â© 2019 All Rights
+                        Reserved.</p>
+                </div>
+            </div>
+        </div>
+        <div class="h-100 border px-0 toggle bg-white">
+            <div class=" d-flex flex-column justify-content-between align-items-center h-100 py-3 px-0">
+                <img src="images/logo.png" alt="logo" class="w-100">
+                <div class="nav-toggle text-center">
+                    <i class="fa-solid fa-bars fs-1"></i>
+                    <i class="fa-solid fa-xmark fs-1 d-none"></i>
 
+                </div>
 
+                <div class="d-flex flex-column">
+                    <i class="fa-solid fa-globe"></i>
+                    <i class="fa-solid fa-share-nodes"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-
-
+    <section id="home" class="bg-black">
+        <div class="home">
+            <div class="container row text-black   mx-auto py-5 min-vh-100">
+                <div id="search" class="mb-5 d-none">
+                    <form action="#" class="row gx-4 gy-4 justify-content-center">
+                        <div class="col-10 col-md-6">
+                            <input id="nameSearch" type="text" placeholder="Search By Name" class="form-control"
+                                data-bs-theme="dark">
+                        </div>
+                        <div class="col-10 col-md-6">
+                            <input id="letterSearch" type="text" placeholder="Search By First Letter"
+                                class="form-control" data-bs-theme="dark" maxlength="1">
+                        </div>
+                    </form>
+                </div>
+                <div id="food-cards" class="row gx-4 gy-4">
+                </div>
+                <div id="contact" class=" mb-5 align-self-end d-none">
+                    <form action="#" class="row gx-4 gy-4 justify-content-center">
+                        <div class="col-10 col-md-6">
+                            <input id="userName" type="text" placeholder="Enter Your Name" class="form-control">
+                            <div class="bg-danger-subtle p-2 mt-2 rounded-2 text-danger d-none text-center">
+                                <p>Special characters and numbers aren't allowed, must be more than 3 characters</p>
+                            </div>
+                        </div>
+                        <div class="col-10 col-md-6">
+                            <input id="userEmail" type="text" placeholder="Enter Your Email" class="form-control">
+                            <div class="bg-danger-subtle p-2 mt-2 rounded-2 text-danger d-none text-center">
+                                <p>Please, enter a valid email address with @ and . </p>
+                            </div>
+                        </div>
+                        <div class="col-10 col-md-6">
+                            <input id="userPhone" type="text" placeholder="Enter Your Phone" class="form-control">
+                            <div class="bg-danger-subtle p-2 mt-2 rounded-2 text-danger d-none text-center">
+                                <p>Please, enter a valid 11 digit phone number starting with (01)</p>
+                            </div>
+                        </div>
+                        <div class="col-10 col-md-6">
+                            <input id="userAge" type="text" placeholder="Enter Your Age" class="form-control">
+                            <div class="bg-danger-subtle p-2 mt-2 rounded-2 text-danger d-none text-center">
+                                <p>Please enter a valid age between 10 and 99</p>
+                            </div>
+                        </div>
+                        <div class="col-10 col-md-6">
+                            <input id="userPassword" type="password" placeholder="Enter Your Password"
+                                class="form-control">
+                            <div class="bg-danger-subtle p-2 mt-2 rounded-2 text-danger d-none text-center">
+                                <p>The password must have at least on 8 characters including one letter and one number
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-10 col-md-6">
+                            <input id="userRePassword" type="password" placeholder="ReEnter The Password"
+                                class="form-control">
+                            <div class="bg-danger-subtle p-2 mt-2 rounded-2 text-danger d-none text-center">
+                                <p>The passwords don't match
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button type="button" id="submitBtn"
+                                class="btn btn-outline-danger mx-auto w-auto d-block disabled">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="details" class="row gx-3 text-white d-none">
+                </div>
+            </div>
+        </div>
+    </section>
 
 
 
@@ -28,7 +133,7 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/all.min.js"></script>
     <script src="js/code.jquery.com_jquery-3.7.0.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/main.js" type="module"></script>
 </body>
 
 </html>
