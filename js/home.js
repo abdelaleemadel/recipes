@@ -2,7 +2,10 @@ export default class Home {
     constructor() {
         this.foodCards = document.getElementById('food-cards');
         this.search = $('#search');
-        this.loading = $('#loading')
+        this.loading = $('#loading');
+        this.navBar = $('nav');
+
+
     }
     /* display one section and the main section only and hide the rest  */
     hideOthers(display = '#food-cards') {
@@ -20,7 +23,8 @@ export default class Home {
     }
     /* Display the food-cards */
     async displayHomePage(type = 'search', method = 's', key = '') {
-        this.loading.fadeIn();
+        this.closeNavBar();
+        this.loading.fadeIn(1);
         const meals = await this.getCard(type, method, key);
         let cartona = ``;
         if (meals['meals']) {
@@ -48,7 +52,8 @@ export default class Home {
     }
     /* Display the categories cards */
     async displayCategories() {
-        this.loading.fadeIn();
+        this.closeNavBar();
+        this.loading.fadeIn(1);
         this.hideOthers();
         const categories = await this.getCategories();
         let cartona = ``;
@@ -73,7 +78,8 @@ export default class Home {
     async displayArea() {
 
         this.hideOthers();
-        this.loading.fadeIn();
+        this.closeNavBar();
+        this.loading.fadeIn(1);
         let areas = await this.getCard('list', 'a', 'list');
         let cartona = ``;
         for (let area of areas['meals']) {
@@ -92,7 +98,8 @@ export default class Home {
 
     /* Display the first 20 ingredients */
     async displayIngredients() {
-        this.loading.fadeIn();
+        this.closeNavBar();
+        this.loading.fadeIn(1);
         $('.home >div >div:not(#food-cards)').addClass('d-none')
         let ingredients = await this.getCard('list', 'i', 'list');
         let cartona = ``;
@@ -110,6 +117,17 @@ export default class Home {
         }
         this.foodCards.innerHTML = cartona;
         this.loading.fadeOut(1000);
+    }
+
+
+    closeNavBar() {
+        $('.fa-bars').removeClass('d-none');
+        $('.fa-xmark').addClass('d-none');
+        this.navBar.removeClass('start-0');
+        for (let i = 0; i < 5; i++) {
+            let x = $('ul li').eq(i);
+            x.animate({ top: '400px' }, (5 - i) * 100)
+        }
     }
 }
 

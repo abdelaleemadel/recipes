@@ -56,6 +56,8 @@ navOpenButton.click(function (event) {
         } else { x.animate({ top: '400px' }, (5 - i) * 100) }
     }
 })
+/* Close Navbar when clicking outside it */
+
 
 /* Activating the categories item in  navBar */
 navItems.eq(1).click(function () {

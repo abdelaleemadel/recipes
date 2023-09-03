@@ -42,7 +42,8 @@ export default class Details {
     }
     /* Display the whole details section*/
     async displayDetails(id = "52772") {
-        this.loading.fadeIn();
+        this.homeObject.closeNavBar();
+        this.loading.fadeIn(1);
         let mealDetails = await this.getDetails(id);
         let { strMeal, strMealThumb, strInstructions, strArea, strCategory, strYoutube, strSource } = mealDetails;
         let cartona = ` <div class="close-details text-end">
