@@ -4,22 +4,36 @@ export default class Home {
         this.search = $('#search');
         this.loading = $('#loading');
         this.navBar = $('nav');
+        this.arrows = $('.navigate');
 
 
     }
     /* display one section and the main section only and hide the rest  */
     hideOthers(display = '#food-cards') {
+        this.closeNavBar();
+
         this.foodCards.innerHTML = '';
         $(`.home >div >div:not(${display})`).addClass('d-none');
         $(this.foodCards).removeClass('d-none');
+        this.arrows.removeClass('d-none')
         $(`${display}`).removeClass('d-none');
+        if (display == "#search") {
+            $('#nameSearch').val('');
+            $('#letterSearch').val('');
+        }
     }
     /* Get the food cards by name/cat/area/firstletter/ingredients */
     async getCard(type = 'search', method = 's', key = '') {
         let respone = await fetch(`https://www.themealdb.com/api/json/v1/1/${type}.php?${method}=${key}
         `);
-        let food = await respone.json();
-        return food;
+        try {
+            let food = await respone.json();
+            return food;
+        }
+        catch (error) { return {} }
+
+
+
     }
     /* Display the food-cards */
     async displayHomePage(type = 'search', method = 's', key = '') {
@@ -100,8 +114,7 @@ export default class Home {
     async displayIngredients() {
         this.closeNavBar();
         this.loading.fadeIn(1);
-        $('.home >div >div:not(#food-cards)').addClass('d-none')
-        let ingredients = await this.getCard('list', 'i', 'list');
+        this.hideOthers(); let ingredients = await this.getCard('list', 'i', 'list');
         let cartona = ``;
         for (let i = 0; i < 25; i++) {
             let { strIngredient, strDescription } = ingredients['meals'][i];

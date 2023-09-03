@@ -86,6 +86,12 @@ nav .bg-black {
     width: 179px;
 }
 
+nav .home-page,
+.food-card,
+.nav-toggle {
+    cursor: pointer;
+}
+
 nav .toggle {
     width: calc(250px / 4);
 }
@@ -96,6 +102,7 @@ nav {
 }
 
 ul li {
+    cursor: pointer;
     position: relative;
     top: 400px;
 }
