@@ -97,11 +97,11 @@ navItems.eq(4).click(function () {
     home.hideOthers('#contact')
 })
 /* Searching by name*/
-nameSearch.keyup(function () {
+nameSearch.on('input', function () {
     home.displayHomePage('search', 's', nameSearch.val());
 })
 /* Searching by First letter */
-letterSearch.keyup(function () {
+letterSearch.on('input', function () {
     if (letterSearch.val()) {
         home.displayHomePage('search', 'f', letterSearch.val());
     } else {
